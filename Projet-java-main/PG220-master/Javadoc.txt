@@ -1,0 +1,45 @@
+Javadoc :
+
+Il y a deux packages : 
+- un package gestion contenant l'aspect algorithmique du projet 
+- un package qui order construit les elements de notre projet 
+
+Voir UML pour plus de clarté.
+
+Package n°1 : [order] 
+
+Nous avons implémenter differentes classes représentants différents caractéristiques parmi lesquelles on retrouve : 
+
+- Classe Date : on l'initialise avec un String. On crée les constructeurs et méthodes necessaires. On y retrouve notamment une methode comparedate qui permet de comparer deux dates. On retrouve egalement une fonction isvalide qui permet de vérifier si la date est bien correct. 
+
+- Classe Prix : Nous avons initialisé le prix avec un Double. Là aussi on retrouve une fonction compare_price pour voir si le budget du client est suffisant. Il y a là aussi une méthode isvalide.
+
+- Classe Size : Cette classe permet de gérer la taille des planches ou des panneaux. On initialise cette méthode avec une longueur et une largueur. On y met des getters et des setters ainsi qu'une fonction pour vérifier que les valeurs ne sont pas négative (isvalid())
+
+- Classe ClientOrder : la classe clientorder utilise deux attributs. Un premier attribut de classe Client, et un second de classe Plank. 
+
+- Classe Order : la classe clientorder hérite de order. Elle va prendre en argument, un nombre (correspondant au nombre de planche voulue), un objet de type Date, un objet Price, et un entier "type" qui permet de différencier les planches des panneaux mais aussi les id clients des ids fournisseurs. 
+
+- Classe Client : la classe client prend en argument un id qui va permettre de différencier chaque client. On vérifie que l'id est positif avec la methode isvalide().
+
+- Classe Plank : la classe plank va utiliser un int correspondant à l'id de la planche ainsi qu'un element de type Size. Nous avons mis dans cette classe une fonction compare_size, qui permet de comparer la taille de deux planches. De même, nous avons écris une fonction qui permet de couper les planches à partir d'une planche fournie.
+
+
+
+Package n°2 : [gestion][Algo]
+
+- Reader.java et ReaderXml.java : 
+
+Ces 2 programmes permettent d'effectuer la lecture du fichier client et fournisseur. On stocke l'ensemble des informations lues dans des tableaux. On crée ensuite un tableau de ClientOrder (voir ci dessus pour plus d'explication sur cette classe)
+
+- WriterXml.java 
+
+Cette classe permet d'écrire un fichier Xml ou un fichier svg selon la méthode appelée. Chaque méthode prend en argument des tableaux de variables contenant les champs utiles tels que les informations relatifs aux id des clients ou des id de fournissieurs, ou encore les dimensions de la nouvelle planche ainsi créee.. etc
+
+- Cut_algo.java :  
+
+Cette fonction va effectuer la découpe des panneaux en planche en fonction des demandes des clients mais aussi des fournisseurs. 
+On prend en compte une liste de clientorder fournie par la méthode issue de Reader puis on prend également en considération une liste de clientorder relatif aux données du fournisseurs.
+On vérifie ensuite que les differentes caractéristiques fournies par nos clientorder sont bien valides. Si c'est le cas, on applique la méthode cutplank issue de la class clientorder, qui prend entre argument une planche souhaitée, et le panneau utilisé pour la découpe et qui retourne la planche découpée sous forme d'un clientorder. 
+
+
